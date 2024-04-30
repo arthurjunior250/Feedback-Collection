@@ -1,0 +1,16 @@
+.footer {
+    background-color: black;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer a {
+    color: #fff;
+    text-decoration: underline;
+  }
+  
+  .footer a:hover {
+    text-decoration: none;
+  }
+  
