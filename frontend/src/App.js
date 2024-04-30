@@ -7,6 +7,7 @@ import './App.css'; // Import custom CSS file for styling
 import FeedbackForm from './pages/FeedbackForm';
 import Navbar from './pages/navbar';
 import Footer from './pages/footer';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/feedback" component={FeedbackForm} />
         </Switch>
       </div>
+      <Route path="/dashboard" component={Dashboard}></Route>    
       <Footer />
     </Router>
   );
