@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './RegisterPage.css'; // Import custom CSS file for styling
-
+import { useEffect } from 'react';
 function RegisterPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,6 +23,10 @@ function RegisterPage() {
       setErrorMessage('Registration failed. Please try again.');
     }
   };
+
+  useEffect(() => {
+    document.title = 'Register | Feedback';
+  }, []);
 
   return (
     <div className="register-container">

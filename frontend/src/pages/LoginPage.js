@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './LoginPage.css'; // Import custom CSS file for styling
-
+import { useEffect } from 'react';
 function LoginPage() {
+  useEffect(() => {
+    document.title = 'Login | Feedback';
+  }, []);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
