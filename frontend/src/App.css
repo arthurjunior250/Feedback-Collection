@@ -9,14 +9,14 @@
   .welcome-message {
     text-align: center;
     margin-bottom: 30px;
-    margin-block: 200px;
+    margin-block: 140px;
   }
   
   .login-button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: burlywood;
+    color: black;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -24,6 +24,6 @@
   }
   
   .login-button:hover {
-    background-color: #0056b3;
+    background-color: rgb(197, 159, 109);
   }
   

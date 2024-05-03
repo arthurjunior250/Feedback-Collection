@@ -7,7 +7,8 @@
     background-color: black; /* Change background color as needed */
     padding: 20px;
     color: #fff; /* Text color for menu items */
-    height: 80vh;
+    height: 65vh;
+    position: relative;
   }
   
   .sidebar ul {
@@ -23,6 +24,7 @@
   
   .sidebar li.active {
     font-weight: bold;
+    color: burlywood;
   }
   
   .content {
@@ -43,8 +45,9 @@
   .card {
     background-color: burlywood;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
   }
   
   .card h3 {
@@ -67,8 +70,8 @@
   }
   
   thead {
-    background-color: #007bff;
-    color: #fff;
+    background-color: burlywood;
+    color: black;
   }
   
   th, td {
@@ -91,8 +94,8 @@
   
   button {
     padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: rgb(197, 159, 109);
+    color: black;
     border: none;
     border-radius: 3px;
     cursor: pointer;
@@ -100,6 +103,10 @@
   }
   
   button:hover {
-    background-color: #0056b3;
+    background-color: rgb(197, 159, 109);
+    background-color: burlywood;
   }
-  
+  .logout{
+    position: absolute;
+    bottom: 50px;
+  }

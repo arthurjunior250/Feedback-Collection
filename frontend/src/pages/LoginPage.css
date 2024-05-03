@@ -3,10 +3,19 @@
     margin: 0 auto;
     padding: 50px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 0px 5px 5px 0px;
     background-color: #fff;
     margin-block: 50px;
   }
+.login-container-div{
+  max-width: 400px;
+  margin: 0 auto;
+  /* padding: 50px; */
+  border: 1px solid #ccc;
+  border-radius: 5px 0px 0px 5px;
+  background-color: #fff;
+  margin-block: 50px;
+}
   
   h2 {
     text-align: center;
@@ -40,9 +49,18 @@
     background-color: #0056b3;
   }
   .register-links{
-    color: #0056b3;
+    color: black;
   }
   .register-links:hover{
-    color: black;
+    color:  burlywood;
+  }
+  .login-image img{
+    width: 350px;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 5px 0px 0px 5px;
+  }
+  .login-containers{
+    display: flex;
   }
   
