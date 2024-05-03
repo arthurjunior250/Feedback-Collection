@@ -34,8 +34,8 @@
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: burlywood;
+    color: black;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -43,6 +43,6 @@
   }
   
   .register-button:hover {
-    background-color: #0056b3;
+    background-color: rgb(197, 159, 109);
   }
   

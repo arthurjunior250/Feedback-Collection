@@ -10,11 +10,11 @@ function DashboardContent() {
    <div className="dashboard-content">
      <div className="card">
        <h3>Users</h3>
-       <p>Total Users: {numUsers}</p>
+       <p>{numUsers}</p>
      </div>
      <div className="card">
        <h3>Feedbacks</h3>
-       <p>Total Feedbacks: {numFeedbacks}</p>
+       <p>{numFeedbacks}</p>
      </div>
      {/* Add more cards for other statistics */}
    </div>

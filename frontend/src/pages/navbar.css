@@ -3,15 +3,15 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: burlywood;
+    color: black;
   }
   
   .navbar-logo img {
     height: 40px;
   }
   .logo{
-    color: white !important;
+    color: black !important;
     text-decoration: underline;
     font-size: 36px;
   }
@@ -19,15 +19,15 @@
   .navbar-signin button {
     padding: 10px 20px;
     background-color: transparent;
-    color: #fff;
-    border: 1px solid #fff;
+    color: black;
+    border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
   
   .navbar-signin button:hover {
-    background-color: #fff;
-    color: #007bff;
+    background-color: rgb(197, 159, 109);
+    color: black;
   }
   

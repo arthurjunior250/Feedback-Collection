@@ -9,6 +9,7 @@
   }
   .feedback-table{
     margin-bottom: 50px;
+    min-height: 50vh;
   }
   h2 {
     text-align: center;
@@ -40,6 +41,9 @@
   textarea {
    max-height: 50px;
   }
+  .message{
+    max-width: 610px;
+  }
   
   .error-message {
     color: red;
@@ -48,8 +52,8 @@
   
   .submit-button {
     padding: 10px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: burlywood;
+    color: black;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -57,7 +61,7 @@
   }
   
   .submit-button:hover {
-    background-color: #0056b3;
+    background-color: rgb(197, 159, 109);
   }
   
   .star-rating {
@@ -138,8 +142,8 @@ textarea {
 
 /* Modal Form Submit Button */
 .submit-button {
-  background-color: #007bff;
-  color: white;
+  background-color:burlywood;
+  color: black;
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
@@ -176,3 +180,22 @@ textarea {
 .star-rating span.filled {
   color: gold;
 }
+.tab-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab-container button {
+  background-color: #f0f0f0;
+  border: 1px solid black;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tab-container button.active {
+  background-color: burlywood;
+}
+

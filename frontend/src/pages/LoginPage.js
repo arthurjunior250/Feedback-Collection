@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './LoginPage.css'; // Import custom CSS file for styling
 import { useEffect } from 'react';
+import login from '../../assets/log.jpg'
 function LoginPage() {
   useEffect(() => {
     document.title = 'Login | Feedback';
@@ -24,6 +25,12 @@ function LoginPage() {
   };
 
   return (
+
+    <>
+    <div className='login-containers'>
+    <div className='login-image login-container-div'>
+    <img src={login} alt="My Image" />
+    </div>
     <div className="login-container">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
@@ -42,6 +49,8 @@ function LoginPage() {
       </form>
       <p className="register-link">Don't have an account? <Link to="/register" className="register-links">Register here</Link></p>
     </div>
+    </div>
+    </>
   );
 }
 

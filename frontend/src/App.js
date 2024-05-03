@@ -21,7 +21,9 @@ function App() {
           <Route path="/feedback" component={FeedbackForm} />
         </Switch>
       </div>
-      <Route path="/dashboard" component={Dashboard}></Route>    
+      <br/>
+      <Route path="/dashboard" component={Dashboard}></Route>
+      <br/>    
       <Footer />
     </Router>
   );

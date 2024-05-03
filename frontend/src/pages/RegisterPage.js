@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './RegisterPage.css'; // Import custom CSS file for styling
 import { useEffect } from 'react';
+import login from '../../assets/log.jpg'
 function RegisterPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,6 +30,11 @@ function RegisterPage() {
   }, []);
 
   return (
+    <>
+    <div className='login-containers'>
+    <div className='login-image login-container-div'>
+    <img src={login} alt="My Image" />
+    </div>
     <div className="register-container">
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
@@ -45,6 +51,8 @@ function RegisterPage() {
         <button type="submit" className="register-button">Register</button>
       </form>
     </div>
+    </div>
+    </>
   );
 }
 

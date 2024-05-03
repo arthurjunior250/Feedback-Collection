@@ -28,7 +28,7 @@ const Dashboard = () => {
           <li className={selectedMenu === 'Feedbacks' ? 'active' : ''} onClick={() => handleMenuClick('Feedbacks')}>
             Feedbacks
           </li>
-          <li className={selectedMenu === 'Logout' ? 'active' : ''}>
+          <li className='logout'>
             Logout
           </li>
         </ul>
