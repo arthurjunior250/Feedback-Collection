@@ -1,66 +1,90 @@
 .login-container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 50px;
-    border: 1px solid #ccc;
-    border-radius: 0px 5px 5px 0px;
-    background-color: #fff;
-    margin-block: 50px;
-  }
-.login-container-div{
   max-width: 400px;
   margin: 0 auto;
-  /* padding: 50px; */
+  padding: 50px;
+  border: 1px solid #ccc;
+  border-radius: 0px 5px 5px 0;
+  background-color: #fff;
+  margin-block: 50px;
+}
+
+.login-container-div {
+  max-width: 400px;
+  margin: 0 auto;
   border: 1px solid #ccc;
   border-radius: 5px 0px 0px 5px;
   background-color: #fff;
   margin-block: 50px;
 }
-  
-  h2 {
-    text-align: center;
+
+h2 {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%; /* Change width to 100% for responsiveness */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.register-links {
+  color: black;
+}
+
+.register-links:hover {
+  color: burlywood;
+}
+
+.login-image img {
+  width: 350px;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.login-containers {
+  display: flex;
+  flex-direction: column; /* Adjust flex-direction for mobile layout */
+}
+
+@media screen and (min-width: 768px) {
+  .login-containers {
+    flex-direction: row; /* Adjust flex-direction for larger screens */
   }
-  
-  .form-group {
-    margin-bottom: 20px;
+
+  .login-container {
+    margin-right: 20px; /* Add margin between containers for larger screens */
   }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input {
-    width: 90%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
+  /* .login-image img {
+    width: 100%; 
+    max-width: 350px; 
+    height: auto;
     border-radius: 5px;
+  } */
+}
+@media screen and (max-width:1024px){
+  .login-container-div {
+   display:none !important;
   }
-  
-  .error-message {
-    color: red;
-    margin-top: 10px;
-    text-align: center;
-  }
-  
-  
-  .login-button:hover {
-    background-color: #0056b3;
-  }
-  .register-links{
-    color: black;
-  }
-  .register-links:hover{
-    color:  burlywood;
-  }
-  .login-image img{
-    width: 350px;
-    height: 420px;
-    object-fit: cover;
-    border-radius: 5px 0px 0px 5px;
-  }
-  .login-containers{
-    display: flex;
-  }
-  
+}

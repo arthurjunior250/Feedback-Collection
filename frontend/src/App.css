@@ -26,4 +26,12 @@
   .login-button:hover {
     background-color: rgb(197, 159, 109);
   }
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
   
