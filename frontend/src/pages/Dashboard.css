@@ -110,3 +110,79 @@
     position: absolute;
     bottom: 50px;
   }
+  /* Responsive styles */
+@media screen and (max-width: 768px) {
+  .dashboard {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .content {
+    border-left: none;
+    padding: 20px 10px;
+  }
+  /* Users content */
+.users-content {
+  margin-top: 20px;
+  overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap; /* Prevent line breaks in table cells */
+}
+
+thead {
+  background-color: burlywood;
+  color: black;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th:first-child,
+td:first-child {
+  border-left: 1px solid #ddd;
+}
+
+th:last-child,
+td:last-child {
+  border-right: 1px solid #ddd;
+}
+
+tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: rgb(197, 159, 109);
+  color: black;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+button:hover {
+  background-color: rgb(197, 159, 109);
+  background-color: burlywood;
+}
+
+.logout {
+  position: absolute;
+  bottom: 50px;
+}
+
+}

@@ -40,6 +40,9 @@
   }
   textarea {
    max-height: 50px;
+   min-height: 50px;
+   max-width: 90%;
+   min-width: 90%;
   }
   .message{
     max-width: 610px;
@@ -197,5 +200,36 @@ textarea {
 
 .tab-container button.active {
   background-color: burlywood;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .feedback-form-container {
+    width: 90%;
+  }
+  .feedback-form {
+    width: 100%;
+}
+.feedback-table{
+  margin-top: 20px;
+  overflow-x: auto;
+}
+  
+}
+
+@media screen and (max-width: 480px) {
+  .feedback-form-container {
+    padding: 10px;
+  }
+
+  input[type='text'],
+  input[type='email'],
+  textarea {
+    width: 90%;
+  }
+
+  .star-rating span {
+    font-size: 30px;
+  }
 }
 
