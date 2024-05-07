@@ -3,7 +3,7 @@
     margin: 0 auto;
     padding: 50px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 0px 5px 5px 0px;
     background-color: #fff;
     margin-block: 50px;
   }
