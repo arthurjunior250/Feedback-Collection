@@ -212,7 +212,9 @@ textarea {
 }
 .feedback-table{
   margin-top: 20px;
-  overflow-x: auto;
+  overflow-x: auto !important;
+  width: 100% !important;
+  min-height: unset !important;
 }
   
 }

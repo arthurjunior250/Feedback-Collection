@@ -28,10 +28,10 @@ connection.once('open', () => {
 })
 
 const feedbackRouter = require('./routes/feedback');
-
+const authRouter = require('./routes/auth');
 
 app.use('/api', feedbackRouter);
-
+app.use('/auth', authRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port😊: ${port}`);
