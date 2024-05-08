@@ -16,6 +16,16 @@ const signup = async(req, res) => {
         });
     }
     user = req.body;
+    let username = await User.findOne({
+        username: req.body.username,
+    });
+    if (username) {
+        return res.status(400).json({
+            status: "fail",
+            message: "Username Exists",
+        });
+    }
+    username = req.body;
     user.password = await hash(user.password);
     const newUser = await new User(user);
     newUser.save();

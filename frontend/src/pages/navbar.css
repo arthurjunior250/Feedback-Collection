@@ -30,4 +30,61 @@
     background-color: rgb(197, 159, 109);
     color: black;
   }
+  .icons{
+    width: 40px !important;
+  }
+  .button-info{
+    display: flex;
+    align-items: center;
+  }
+  .navbar-user a{
+    text-decoration: none;
+    display: block;
+    width: fit-content;
+  }
+
+
+
+
+/* //popup */
+  
+  .navbar-user {
+    position: relative;
+  }
+  
+  .button-info {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  .logout-popup {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color:burlywood;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px;
+    display: block;
+  }
+  
+  .navbar-user:hover .logout-popup {
+    display: block;
+  }
+  
+  .logout-popup button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    justify-self: center;
+  }
+  
+  .logout-popup button:hover {
+    background-color: #f5f5f5;
+  }
   

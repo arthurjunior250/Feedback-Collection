@@ -53,19 +53,20 @@ input {
 }
 
 .register-links:hover {
-  color: burlywood;
+  color: black;
+  font-weight: bolder;
 }
 
 .login-image img {
   width: 350px;
-  height: 420px;
+  height: 100%;
   object-fit: cover;
   border-radius: 5px 0px 0px 5px;
 }
 
 .login-containers {
   display: flex;
-  flex-direction: column; /* Adjust flex-direction for mobile layout */
+  flex-direction: column;
 }
 
 @media screen and (min-width: 768px) {

@@ -4,6 +4,7 @@ import DashboardContent from './DashboardPage/DashboardContent';
 import UsersContent from './DashboardPage/UsersContent';
 import FeedbacksContent from './DashboardPage/FeedbacksContent';
 import { useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 const Dashboard = () => {
   const [selectedMenu, setSelectedMenu] = useState('Dashboard');
 
@@ -15,6 +16,29 @@ const Dashboard = () => {
     document.title = 'Dashboard | Feedback';
   }, []);
 
+  const handleLogout = () => {
+    // Clear local storage
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    // Redirect to login page
+    window.location.href = '/login'; // Use window.location.href to force a full page reload
+  };
+
+  // Check if token exists in local storage
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    // If token doesn't exist, redirect to login page
+    return <Redirect to="/login" />;
+  }
+
+
+    // Get user role from local storage
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userRole = user ? user.data.role : null;
+
+
+
   return (
     <div className="dashboard">
       <div className="sidebar">
@@ -22,25 +46,36 @@ const Dashboard = () => {
           <li className={selectedMenu === 'Dashboard' ? 'active' : ''} onClick={() => handleMenuClick('Dashboard')}>
             Dashboard
           </li>
+           {userRole === 'admin' && (
           <li className={selectedMenu === 'Users' ? 'active' : ''} onClick={() => handleMenuClick('Users')}>
             Users
           </li>
+            )}
           <li className={selectedMenu === 'Feedbacks' ? 'active' : ''} onClick={() => handleMenuClick('Feedbacks')}>
             Feedbacks
           </li>
-          <li className='logout'>
+          <li className='logout' onClick={handleLogout}>
             Logout
           </li>
         </ul>
       </div>
+      {userRole === 'admin' && (
       <div className="content">
         {selectedMenu === 'Dashboard' && <DashboardContent />}
         {selectedMenu === 'Users' && <UsersContent />}
         {selectedMenu === 'Feedbacks' && <FeedbacksContent />}
       </div>
+      )}
+      {userRole === 'standard-user' && (
+      <div className="content">
+         {selectedMenu === 'Dashboard' && <DashboardContent />}
+        {selectedMenu === 'Feedbacks' && <FeedbacksContent />}
+      </div>
+      )}
     </div>
   );
 };
+
 <DashboardContent />;
 <UsersContent />;
 <FeedbacksContent />

@@ -30,39 +30,75 @@ import axios from 'axios';
 function DashboardContent() {
   // State to store the number of feedbacks
   const [numFeedbacks, setNumFeedbacks] = useState(0);
+  const [numUsers, setNumUsers] = useState(0);
 
   // Fetch the number of feedbacks from the backend when the component mounts
   useEffect(() => {
     fetchNumFeedbacks();
+    fetchNumUsers();
   }, []);
 
+  const [loggedInUserEmail, setLoggedInUserEmail] = useState(localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).data.email : '');
   // Function to fetch the number of feedbacks from the backend
   const fetchNumFeedbacks = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/feedback');
-      setNumFeedbacks(response.data.length);
+      const user = JSON.parse(localStorage.getItem('user'));
+      const userRole = user ? user.data.role : null;
+  
+      let numFeedbacks = 0;
+      if (userRole === 'admin') {
+        const response = await axios.get('http://localhost:5000/api/feedback');
+        numFeedbacks = response.data.length;
+      } else {
+        const response = await axios.get('http://localhost:5000/api/feedback');
+        const filteredFeedbacks = response.data.filter(feedback => feedback.email === loggedInUserEmail);
+        numFeedbacks = filteredFeedbacks.length;
+      }
+  
+      setNumFeedbacks(numFeedbacks);
     } catch (error) {
       console.error('Error fetching number of feedbacks:', error);
-      // Handle error if necessary
+    }
+  };
+  
+  
+  // const fetchNumFeedbacks = async () => {
+  //   try {
+  //     const response = await axios.get('http://localhost:5000/api/feedback');
+  //     setNumFeedbacks(response.data.length);
+  //   } catch (error) {
+  //     console.error('Error fetching number of feedbacks:', error);
+  //   }
+  // };
+
+  const fetchNumUsers = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/auth');
+      setNumUsers(response.data.data.length);
+    } catch (error) {
+      console.error('Error fetching number of users:', error);
     }
   };
 
-  // Mock data for the number of users
-  const numUsers = 100;
+    // Get user role from local storage
+    const user = JSON.parse(localStorage.getItem('user'));
+    const userRole = user ? user.data.role : null;
+
 
   return (
     <>
       <h2>Dashboard</h2>
       <div className="dashboard-content">
+      {userRole === 'admin' && (
         <div className="card">
           <h3>Users</h3>
           <p>{numUsers}</p>
         </div>
+      )}
         <div className="card">
           <h3>Feedbacks</h3>
           <p>{numFeedbacks}</p>
         </div>
-        {/* Add more cards for other statistics */}
       </div>
     </>
   );
