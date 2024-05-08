@@ -82,6 +82,13 @@ function FeedbacksContent() {
     }
   };
 
+  const [loggedInUserEmail, setLoggedInUserEmail] = useState(localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).data.email : '');
+
+   // Get user role from local storage
+   const user = JSON.parse(localStorage.getItem('user'));
+   const userRole = user ? user.data.role : null;
+
+
   return (
     <div className="users-content">
         <ToastContainer />
@@ -89,30 +96,52 @@ function FeedbacksContent() {
       <table>
         <thead>
           <tr>
+          {userRole === 'admin' && (
             <th>No</th>
+            )}
             <th>Username</th>
             <th>Email</th>
-            <th>Name</th>
             <th>Rate</th>
             <th>Message</th>
             <th>Action</th>
           </tr>
         </thead>
+        {userRole === 'standard-user' && (
         <tbody>
           {feedbacks.map((feedback, index) => (
+              feedback.email === loggedInUserEmail && (
             <tr key={feedback._id}>
-              <td>{index + 1}</td>
-              <td>{feedback.username || 'Unknown'}</td>
+              {/* <td>{index + 1}</td> */}
+              <td>{feedback.name || 'Unknown'}</td>
               <td>{feedback.email || 'Unknown'}</td>
-              <td>{feedback.name}</td>
               <td>{feedback.rating}</td>
               <td>{feedback.message}</td>
               <td>
                 <button onClick={() => handleDelete(feedback._id)}>Delete</button>
               </td>
             </tr>
+              )
           ))}
         </tbody>
+        )}
+          {userRole === 'admin' && (
+        <tbody>
+          {feedbacks.map((feedback, index) => (
+              // feedback.email === loggedInUserEmail && (
+            <tr key={feedback._id}>
+              <td>{index + 1}</td>
+              <td>{feedback.name || 'Unknown'}</td>
+              <td>{feedback.email || 'Unknown'}</td>
+              <td>{feedback.rating}</td>
+              <td>{feedback.message}</td>
+              <td>
+                <button onClick={() => handleDelete(feedback._id)}>Delete</button>
+              </td>
+            </tr>
+              // )
+          ))}
+        </tbody>
+        )}
       </table>
     </div>
   );

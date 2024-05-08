@@ -261,13 +261,31 @@ const FeedbackForm = () => {
     rating: Yup.number().min(1, 'Rating must be at least 1').max(5, 'Rating must be at most 5').required('Rating is required')
   });
 
+
+  const [loggedInUserEmail, setLoggedInUserEmail] = useState(localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).data.email : '');
+  const [loggedInUsername, setLoggedInUsername] = useState(localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).data.username : '');
+
+  // useEffect(() => {
+  //   // Retrieve login state and email from localStorage
+  //   const token = localStorage.getItem('token');
+  //   const user = localStorage.getItem('user');
+  //   if (token && user) {
+  //     const userData = JSON.parse(user);
+  //     setLoggedInUserEmail(userData.data.email);
+  //     setLoggedInUsername(userData.data.username);
+   
+  //   }
+
+  // }, []);
+
   const initialValues = {
-    name: '',
-    email: '',
+    name: loggedInUsername,
+    email: loggedInUserEmail,
     message: '',
     rating: ''
   };
-
+ 
+  
   const handleSubmit = async (values, { resetForm }) => {
     try {
       if (editingFeedback) {
@@ -284,6 +302,7 @@ const FeedbackForm = () => {
       console.error('Error submitting feedback:', error);
       toast.error('Error submitting feedback');
     }
+  
   };
 
   const handleDelete = async (id) => {
@@ -296,6 +315,8 @@ const FeedbackForm = () => {
       toast.error('Error deleting feedback');
     }
   };
+
+  
 
   return (
     <>
@@ -316,12 +337,12 @@ const FeedbackForm = () => {
               <Form className="feedback-form">
                 <div className="form-group">
                   <label htmlFor="name">Name</label>
-                  <Field type="text" id="name" name="name" />
+                  <Field type="text" id="name" name="name" value={loggedInUsername} readOnly />
                   <ErrorMessage name="name" component="div" className="error-message" />
                 </div>
                 <div className="form-group">
                   <label htmlFor="email">Email</label>
-                  <Field type="email" id="email" name="email" />
+                  <Field type="email" id="email" name="email" value={loggedInUserEmail} readOnly />
                   <ErrorMessage name="email" component="div" className="error-message" />
                 </div>
                 <div className="form-group">
@@ -358,7 +379,7 @@ const FeedbackForm = () => {
           <table>
             <thead>
               <tr>
-                <th>No</th>
+                {/* <th>No</th> */}
                 <th>Name</th>
                 <th>Email</th>
                 <th>Rating</th>
@@ -367,14 +388,19 @@ const FeedbackForm = () => {
               </tr>
             </thead>
             <tbody>
-            {feedbacks.length === 0 && activeTab === 'list' && (
+            {/* {feedbacks.length === 0 && activeTab === 'list' && (
                 <p>No feedback available.</p>
-              )}
+              )} */}
+            {feedbacks.filter(feedback => feedback.email === loggedInUserEmail).length === 0 && activeTab === 'list' && (
+              <p>No feedback available.</p>
+            )}
+
               {feedbacks.map((feedback, index) => (
+                   feedback.email === loggedInUserEmail && (
                 <tr key={feedback._id}>
-                  <td>{index + 1}</td>
+                  {/* <td>{index + 1}</td> */}
                   <td>{feedback.name}</td>
-                  <td>{feedback.email}</td>
+                  <td>{feedback.email === loggedInUserEmail ? loggedInUserEmail : 'Anonymous'}</td>
                   <td>{feedback.rating}</td>
                   <td className='message'>{feedback.message}</td>
                   <td>
@@ -382,6 +408,7 @@ const FeedbackForm = () => {
                     <button onClick={() => handleDelete(feedback._id)}>Delete</button>
                   </td>
                 </tr>
+                  )
               ))}
             </tbody>
           </table>
@@ -402,12 +429,12 @@ const FeedbackForm = () => {
                   <Form className="feedback-form">
                     <div className="form-group">
                       <label htmlFor="name">Name</label>
-                      <Field type="text" id="name" name="name" />
+                      <Field type="text" id="name" name="name" value={loggedInUsername} readOnly />
                       <ErrorMessage name="name" component="div" className="error-message" />
                     </div>
                     <div className="form-group">
                       <label htmlFor="email">Email</label>
-                      <Field type="email" id="email" name="email" />
+                      <Field type="email" id="email" name="email" value={loggedInUserEmail} readOnly/>
                       <ErrorMessage name="email" component="div" className="error-message" />
                     </div>
                     <div className="form-group">

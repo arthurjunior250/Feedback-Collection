@@ -63,6 +63,13 @@
   .users-content {
     margin-top: 20px;
   }
+  /* .users-content tbody {
+      position: fixed;
+  } */
+  .users-content{
+    height: 60vh !important;
+    overflow-y: scroll;
+  }
   
   table {
     width: 100%;

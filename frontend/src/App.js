@@ -8,6 +8,7 @@ import FeedbackForm from './pages/FeedbackForm';
 import Navbar from './pages/navbar';
 import Footer from './pages/footer';
 import Dashboard from './pages/Dashboard';
+import PrivateRoute from './pages/PrivateRoute';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
-          <Route path="/feedback" component={FeedbackForm} />
+          <PrivateRoute path="/feedback" component={FeedbackForm} />
         </Switch>
       </div>
       <br/>
