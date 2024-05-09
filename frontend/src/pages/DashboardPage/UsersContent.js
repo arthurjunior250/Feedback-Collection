@@ -96,6 +96,8 @@ function UsersContent() {
     return <div>Error: {error}</div>; // Render error message if there's an error
   }
 
+  const [loggedInUserEmail, setLoggedInUserEmail] = useState(localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).data.email : '');
+
   return (
     <div className="users-content">
       <ToastContainer />
@@ -112,12 +114,12 @@ function UsersContent() {
         </thead>
         <tbody>
           {users.map((user, index) => (
-            <tr key={user._id}>
+            <tr key={user._id} className={user.email === loggedInUserEmail ? 'highlighted-email' : ''}>
               <td>{index + 1}</td>
               <td>{user.username}</td>
               <td>{user.email}</td>
               <td>{user.role}</td>
-              <td>
+              <td key={user._id} className={user.email === loggedInUserEmail ? 'highlighted-button' : ''}>
                 <button onClick={() => handleUpdateRole(user._id, user.role === 'admin' ? 'standard-user' : 'admin')}>Toggle Role</button>
                 <button onClick={() => handleDelete(user._id)}>Delete</button>
               </td>

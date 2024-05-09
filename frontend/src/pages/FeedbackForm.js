@@ -316,7 +316,7 @@ const FeedbackForm = () => {
     }
   };
 
-  
+  const c=0;
 
   return (
     <>
@@ -379,7 +379,7 @@ const FeedbackForm = () => {
           <table>
             <thead>
               <tr>
-                {/* <th>No</th> */}
+                <th>No</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Rating</th>
@@ -395,10 +395,15 @@ const FeedbackForm = () => {
               <p>No feedback available.</p>
             )}
 
-              {feedbacks.map((feedback, index) => (
-                   feedback.email === loggedInUserEmail && (
+              {/* {feedbacks.map((feedback, index) => (
+             
+                   feedback.email === loggedInUserEmail && ( */}
+                     {feedbacks
+                  .filter(feedback => feedback.email === loggedInUserEmail)
+                  .map((feedback, index) => (
+                    
                 <tr key={feedback._id}>
-                  {/* <td>{index + 1}</td> */}
+                  <td>{index + 1}</td>
                   <td>{feedback.name}</td>
                   <td>{feedback.email === loggedInUserEmail ? loggedInUserEmail : 'Anonymous'}</td>
                   <td>{feedback.rating}</td>
@@ -408,7 +413,7 @@ const FeedbackForm = () => {
                     <button onClick={() => handleDelete(feedback._id)}>Delete</button>
                   </td>
                 </tr>
-                  )
+                  // )
               ))}
             </tbody>
           </table>
