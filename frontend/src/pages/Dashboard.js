@@ -5,6 +5,7 @@ import UsersContent from './DashboardPage/UsersContent';
 import FeedbacksContent from './DashboardPage/FeedbacksContent';
 import { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
+import ProfileContent from './DashboardPage/ProfileContent';
 const Dashboard = () => {
   const [selectedMenu, setSelectedMenu] = useState('Dashboard');
 
@@ -46,6 +47,9 @@ const Dashboard = () => {
           <li className={selectedMenu === 'Dashboard' ? 'active' : ''} onClick={() => handleMenuClick('Dashboard')}>
             Dashboard
           </li>
+          <li className={selectedMenu === 'Profile' ? 'active' : ''} onClick={() => handleMenuClick('Profile')}>
+            My Profile
+          </li>
            {userRole === 'admin' && (
           <li className={selectedMenu === 'Users' ? 'active' : ''} onClick={() => handleMenuClick('Users')}>
             Users
@@ -62,6 +66,7 @@ const Dashboard = () => {
       {userRole === 'admin' && (
       <div className="content">
         {selectedMenu === 'Dashboard' && <DashboardContent />}
+        {selectedMenu === 'Profile' && <ProfileContent />}
         {selectedMenu === 'Users' && <UsersContent />}
         {selectedMenu === 'Feedbacks' && <FeedbacksContent />}
       </div>
@@ -69,6 +74,7 @@ const Dashboard = () => {
       {userRole === 'standard-user' && (
       <div className="content">
          {selectedMenu === 'Dashboard' && <DashboardContent />}
+         {selectedMenu === 'Profile' && <ProfileContent />}
         {selectedMenu === 'Feedbacks' && <FeedbacksContent />}
       </div>
       )}
@@ -77,6 +83,7 @@ const Dashboard = () => {
 };
 
 <DashboardContent />;
+<ProfileContent />;
 <UsersContent />;
 <FeedbacksContent />
 

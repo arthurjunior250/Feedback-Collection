@@ -96,9 +96,7 @@ function FeedbacksContent() {
       <table>
         <thead>
           <tr>
-          {userRole === 'admin' && (
             <th>No</th>
-            )}
             <th>Username</th>
             <th>Email</th>
             <th>Rate</th>
@@ -108,10 +106,17 @@ function FeedbacksContent() {
         </thead>
         {userRole === 'standard-user' && (
         <tbody>
-          {feedbacks.map((feedback, index) => (
-              feedback.email === loggedInUserEmail && (
+            {feedbacks.filter(feedback => feedback.email === loggedInUserEmail).length === 0  && (
+              <p>No feedback available.</p>
+            )}
+          {/* {feedbacks.map((feedback, index) => (
+              feedback.email === loggedInUserEmail && ( */}
+                    {feedbacks
+                  .filter(feedback => feedback.email === loggedInUserEmail)
+                  .map((feedback, index) => (
+
             <tr key={feedback._id}>
-              {/* <td>{index + 1}</td> */}
+              <td>{index + 1}</td>
               <td>{feedback.name || 'Unknown'}</td>
               <td>{feedback.email || 'Unknown'}</td>
               <td>{feedback.rating}</td>
@@ -120,20 +125,24 @@ function FeedbacksContent() {
                 <button onClick={() => handleDelete(feedback._id)}>Delete</button>
               </td>
             </tr>
-              )
+              // )
           ))}
         </tbody>
         )}
           {userRole === 'admin' && (
         <tbody>
+            {feedbacks.length === 0 && (
+                <p>No feedback available.</p>
+              )}
+
           {feedbacks.map((feedback, index) => (
               // feedback.email === loggedInUserEmail && (
-            <tr key={feedback._id}>
+            <tr key={feedback._id} className={feedback.email === loggedInUserEmail ? 'highlighted-email' : ''}>
               <td>{index + 1}</td>
               <td>{feedback.name || 'Unknown'}</td>
               <td>{feedback.email || 'Unknown'}</td>
               <td>{feedback.rating}</td>
-              <td>{feedback.message}</td>
+              <td className='dash-message'>{feedback.message}</td>
               <td>
                 <button onClick={() => handleDelete(feedback._id)}>Delete</button>
               </td>
