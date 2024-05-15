@@ -51,16 +51,32 @@
 
 // export default Navbar;
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css'; // Import custom CSS file for styling
 import { Link, useHistory } from 'react-router-dom';
 import icon from '../../assets/users.png';
+import axios from 'axios';
+
 const Navbar = () => {
   const history = useHistory();
   const isLoggedIn = !!localStorage.getItem('token');
   const username = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).data.username : ''; // Assuming username is stored in local storage
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+  const [loggedInUserId, setLoggedInUserId] = useState(localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).data._id : '');
+  const [newUsername, setNewUsername] = useState('');
+  useEffect(() => {
+    // Fetch user information from the backend API when the component mounts
+    const fetchUser = async () => {
+        try {
+            const response = await axios.get(`http://localhost:5000/auth/${loggedInUserId}`);
+            setNewUsername(response.data.data.username);
+        } catch (error) {
+            console.error('Error fetching user:', error);
+        }
+    };
 
+    fetchUser();
+}, []);
   const handleFeedbackClick = () => {
     if (isLoggedIn) {
       history.push('/feedback');
@@ -87,7 +103,7 @@ const Navbar = () => {
           <Link to="/dashboard">
           <button className='button-info'>
           <img src={icon} alt="My Image"  className='icons'/>
-          {username}
+          {newUsername}
           </button>
           </Link>
           {showLogoutPopup && (
