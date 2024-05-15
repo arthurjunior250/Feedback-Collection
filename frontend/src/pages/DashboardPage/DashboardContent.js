@@ -92,12 +92,12 @@ function DashboardContent() {
       {userRole === 'admin' && (
         <div className="card">
           <h3>Users</h3>
-          <p>{numUsers}</p>
+          <h4>{numUsers}</h4>
         </div>
       )}
         <div className="card">
           <h3>Feedbacks</h3>
-          <p>{numFeedbacks}</p>
+          <h4>{numFeedbacks}</h4>
         </div>
       </div>
     </>

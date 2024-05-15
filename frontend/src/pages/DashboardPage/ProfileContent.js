@@ -31,7 +31,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import icon from '../../../assets/users.png';
+import icon from '../../../assets/user1.png';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

@@ -39,8 +39,9 @@
   /* //dashboard */
   .dashboard-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 100px));
     gap: 20px;
+    justify-content: center;
   }
   
   .card {
@@ -234,7 +235,7 @@ button:hover {
 }
 
 .profile-image img {
-  width: 100%;
+  width: 60%;
   border-radius: 8px;
 }
 
