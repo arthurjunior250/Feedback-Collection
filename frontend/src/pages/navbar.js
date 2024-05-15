@@ -54,7 +54,7 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css'; // Import custom CSS file for styling
 import { Link, useHistory } from 'react-router-dom';
-import icon from '../../assets/users.png';
+import icon from '../../assets/user1.png';
 import axios from 'axios';
 
 const Navbar = () => {
