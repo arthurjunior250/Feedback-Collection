@@ -64,6 +64,20 @@ const getAllUsers = async(req, res) => {
     const users = await User.find();
     res.status(200).json({ status: "success", data: users })
 }
+const getUserById = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const user = await User.findById(id);
+        if (!user) {
+            return res.status(404).json({ status: "fail", message: "User not found" });
+        }
+        res.status(200).json({ status: "success", data: user });
+    } catch (error) {
+        console.error('Error fetching user:', error);
+        res.status(500).json({ status: "error", message: "Internal server errors" });
+    }
+};
+
 
 const deleteUserById = async(req, res) => {
     const { id } = req.params;
@@ -73,7 +87,7 @@ const deleteUserById = async(req, res) => {
     res.status(200).json({ status: "success", message: "User Deleted" });
 }
 
-const updateProfile = async (req, res) => {
+const updateUserById = async (req, res) => {
     const { id } = req.params;
     const updates = req.body;
     const user = await User.findById(id);
@@ -82,4 +96,4 @@ const updateProfile = async (req, res) => {
     return res.status(200).json({ status: "success", message: "User Updated successfully", data: updates });
 };
 
-module.exports = { signup, login, userProfile, getAllUsers, deleteUserById, updateProfile };
+module.exports = { signup, login, userProfile, getAllUsers,getUserById, deleteUserById, updateUserById };
